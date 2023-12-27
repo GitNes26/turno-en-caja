@@ -1,0 +1,99 @@
+@import url("../assets/fonts/Lexend-VariableFont_wght.ttf");
+/* FIGURAS FLOTANTES */
+@import url("./float_figures.css");
+@import url("./turn-table.css");
+
+* {
+   font-family: "Lexend", sans-serif;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   background-color: rgb(18, 196, 136);
+   height: 100vh;
+   width: 100vw;
+}
+.container {
+   display: flex;
+   flex-direction: column;
+   justify-items: center;
+   width: 100%;
+   padding-inline: 5vw;
+}
+
+.container-fluid {
+   width: 100%;
+}
+
+.grid-container {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+   grid-gap: 1rem;
+   justify-content: center;
+   align-items: center;
+   margin: auto;
+   padding: 1rem 0;
+   width: 100%;
+}
+
+.grid-container-row {
+   display: grid;
+   grid-template-rows: repeat(auto-fit, minmax(1fr));
+   grid-gap: 1rem;
+   justify-content: center;
+   align-items: center;
+   margin: auto;
+   padding: 0.5rem 0;
+   justify-items: center;
+   width: 100%;
+}
+
+.title {
+   margin-top: 1rem;
+   text-align: center;
+   width: 100%;
+}
+
+.table-container {
+   /* background-color: blue; */
+   height: 50vh;
+   grid-column: span 1;
+}
+
+.banners-container {
+   background-color: black;
+   height: 50vh;
+   grid-column: span 1;
+   display: flex;
+   border-radius: 12px;
+}
+
+.nums-container {
+   grid-row: 2 / span 2;
+}
+
+.card {
+   background-color: white;
+   border: none;
+   border-radius: 12px;
+   padding: 20px;
+   text-align: center;
+   color: rgb(13, 126, 88);
+   font-weight: bolder;
+   font-size: 2rem;
+}
+
+video {
+   object-fit: cover;
+   border-radius: 10px;
+}
+
+img,
+video,
+object,
+embed {
+   max-width: 100%;
+   height: auto;
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!-- JQuery 3.7.1 -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+   <!-- FontAwesome 6 -->
+   <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.0/css/all.css">
+
+   <!-- Bootstrap 5.3.2 -->
+   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> -->
+
+   <link rel="stylesheet" href="/styles/style.css">
+
+   <title>Turnos en caja</title>
+</head>
+
+<body>
+   <!-- <div class="container">
+      <div class="figure figure1"></div>
+      <div class="figure figure2"></div>
+      <div class="figure figure3"></div>
+   </div> -->
+
+   <div class="container">
+      <h1 class="title">TURNOS EN CAJA</h1>
+      <main class="grid-container">
+
+         <section class="grid-container">
+
+            <div class="table-container">
+
+               <table class="turn-table">
+                  <thead>
+                     <tr>
+                        <th>Caja</th>
+                        <th>Turno Actual</th>
+                     </tr>
+                  </thead>
+                  <tbody id="tbody_turnos">
+                     <tr>
+                        <td>Caja 1</td>
+                        <td>A-001</td>
+                     </tr>
+                     <tr>
+                        <td>Caja 2</td>
+                        <td>B-002</td>
+                     </tr>
+                     <tr>
+                        <td>Caja 3</td>
+                        <td>C-003</td>
+                     </tr>
+                     <tr>
+                        <td>Caja 4</td>
+                        <td>D-004</td>
+                     </tr>
+                     <tr>
+                        <td>Caja 5</td>
+                        <td>E-005</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+
+            <div class="banners-container">
+               <video src="assets/images/video1.mp4" controls autoplay loop></video>
+            </div>
+         </section>
+
+         <section class="nums-container">
+            <h1 class="title">TURNOS EN COLA</h1>
+
+            <div class="grid-container" id="cards_container">
+               <div class="card">A-006</div>
+               <div class="card">B-007</div>
+               <div class="card">C-008</div>
+               <div class="card">D-009</div>
+               <div class="card">E-010</div>
+               <div class="card">A-011</div>
+               <div class="card">B-012</div>
+               <div class="card">C-013</div>
+               <div class="card">D-014</div>
+            </div>
+         </section>
+
+
+      </main>
+   </div>
+
+
+   <!-- Bootstrap 5.3.2 -->
+   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
+
+   <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+   <script>
+      // Enable pusher logging - don't include this in production
+      // document.getElementById("tbody_turnos").innerHTML = "";
+      // document.getElementById("cards_container").innerHTML = "";
+
+      const CAJAS = 5
+      Pusher.logToConsole = true;
+
+      var pusher = new Pusher("b70b1baa91c69051cb75", {
+         cluster: "us2",
+      });
+
+      var channel = pusher.subscribe("myCanal");
+      channel.bind("myEvento", function (data) {
+         const rows = JSON.parse(data.message);
+         console.log("ya llego", rows);
+         const tableHtml = `
+            ${rows.map((r, index) => {
+            if (index >= CAJAS) return
+            let bg_row = "";
+            if (index == 0) bg_row = "red";
+
+            return `
+                  <tr style="background-color:${bg_row}">
+                     <td>${r.CAJA}</td>
+                     <td>${r.TURNO}</td>
+                  </tr>
+               `;
+         })}`;
+
+         const cardsHtml = `
+            ${rows.map((r, index) => {
+            if (index < CAJAS) return
+            return `
+                  <div class="card">${r.TURNNO}</div>
+               `;
+         })}`;
+
+         document.getElementById("tbody_turnos").innerHTML = tableHtml;
+         document.getElementById("cards_container").innerHTML = cardsHtml;
+      });
+   </script>
+</body>
+
+</html>

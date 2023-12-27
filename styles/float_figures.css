@@ -1,0 +1,78 @@
+/* body, html {
+   height: 100%;
+   margin: 0;
+ } */
+
+.container {
+   position: relative;
+   width: 100%;
+   height: 100%;
+}
+
+.figure {
+   position: absolute;
+   border-radius: 50%;
+   animation-duration: 5s;
+   animation-iteration-count: infinite;
+   animation-timing-function: ease-in-out;
+}
+
+.figure1 {
+   width: 30px;
+   height: 30px;
+   background-color: #3498db; /* Color azul */
+   animation-name: floatAnimation1;
+   bottom: -30px;
+   left: 20%;
+}
+
+.figure2 {
+   width: 50px;
+   height: 50px;
+   background-color: #e74c3c; /* Color rojo */
+   animation-name: floatAnimation2;
+   bottom: -50px;
+   left: 50%;
+}
+
+.figure3 {
+   width: 70px;
+   height: 70px;
+   background-color: #27ae60; /* Color verde */
+   animation-name: floatAnimation3;
+   bottom: -70px;
+   left: 80%;
+}
+
+@keyframes floatAnimation1 {
+   0% {
+      transform: translateY(0);
+   }
+   100% {
+      transform: translateY(100%);
+   }
+}
+
+@keyframes floatAnimation2 {
+   0% {
+      transform: translateY(0);
+   }
+   50% {
+      transform: translateY(-80px);
+   }
+   100% {
+      transform: translateY(0);
+   }
+}
+
+@keyframes floatAnimation3 {
+   0% {
+      transform: translateY(0);
+   }
+   50% {
+      transform: translateY(-100px);
+   }
+   100% {
+      transform: translateY(0);
+   }
+}
