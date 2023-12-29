@@ -1,0 +1,29 @@
+/* Estilos para navegadores webkit como Chrome y Safari */
+::-webkit-scrollbar {
+   width: 0px; /* Ancho de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-track {
+   background-color: #f1f1f1; /* Color de fondo del área de la barra */
+}
+
+::-webkit-scrollbar-thumb {
+   background-color: #888; /* Color del "pulgarcito" de la barra */
+   border-radius: 5px; /* Borde redondeado del "pulgarcito" */
+}
+
+/* Estilos para navegadores basados en Firefox */
+/* Nota: Firefox utiliza su propia sintaxis para personalizar la barra de desplazamiento */
+/* Puedes adaptar estos estilos según tu preferencia */
+scrollbar {
+   width: 10px; /* Ancho de la barra de desplazamiento */
+}
+
+scrollbar-track {
+   background-color: #f1f1f1; /* Color de fondo del área de la barra */
+}
+
+scrollbar-thumb {
+   background-color: #888; /* Color del "pulgarcito" de la barra */
+   border-radius: 5px; /* Borde redondeado del "pulgarcito" */
+}
