@@ -1,58 +1,174 @@
-/* body { */
-/* font-family: Arial, sans-serif;
-   margin: 0;
-   padding: 0;
-   background-color: #f4f4f4;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 100vh; */
-/* } */
+/* ============================================
+   ESTILOS PARA TABLA DE TURNOS
+   ============================================ */
 
-/* .container {
-   text-align: center;
-   background-color: #fff;
-   padding: 40px;
-   border-radius: 8px;
-   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-} */
+/* Importar variables si no se importan desde style.css */
+/* @import url("./variables.css"); */
 
-/* h1 {
-   margin-bottom: 20px;
-   color: #333;
-} */
-
-.turn-table {
-   width: 100%;
-   border-collapse: collapse;
-   font-size: 35px;
-   font-weight: bold;
-   height: 100%;
+.turn-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-fuerte);
+  background-color: var(--blanco);
+  padding: var(--espacio-md);
 }
 
-.turn-table th,
-.turn-table td {
-   padding: 10px;
-   /* border: 1px solid #ccc; */
+.turn-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-family: var(--fuente-zapf);
+  font-size: var(--texto-2xl);
+  font-weight: bold;
+  height: 100%;
+  border-radius: var(--radio-md);
+  overflow: hidden;
 }
 
 .turn-table th {
-   background-color: rgb(13, 126, 88);
-   color: white;
+  background: var(--gradiente-guinda);
+  color: var(--blanco);
+  padding: var(--espacio-md) var(--espacio-md);
+  text-align: center;
+  font-weight: bold;
+  font-size: var(--texto-4xl);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.turn-table th:first-child {
+  border-top-left-radius: var(--radio-md);
+}
+
+.turn-table th:last-child {
+  border-top-right-radius: var(--radio-md);
 }
 
 .turn-table td {
-   text-align: center;
-}
-
-.turn-table tr {
-   background-color: #d4d3d3;
-}
-.turn-table tr:nth-child(even) {
-   background-color: #f9f9f9;
+  padding: var(--espacio-xs) var(--espacio-md);
+  text-align: center;
+  border-bottom: 2px solid var(--gris-claro);
+  transition: all var(--transicion-rapida);
 }
 
 .turn-table tbody tr {
-   margin-block: 10px;
-   border-radius: 15px;
+  background-color: var(--gris-claro);
+  transition: all var(--transicion-normal);
+  font-size: var(--texto-7xl);
+}
+
+.turn-table tbody tr:hover {
+  background-color: var(--guinda-claro);
+  color: var(--blanco);
+  transform: translateX(4px);
+  box-shadow: var(--sombra-suave);
+}
+
+.turn-table tbody tr:nth-child(even) {
+  background-color: var(--blanco);
+}
+
+.turn-table tbody tr:nth-child(even):hover {
+  background-color: var(--guinda-claro);
+}
+
+.turn-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.turn-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: var(--radio-md);
+}
+
+.turn-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: var(--radio-md);
+}
+
+/* Estilos específicos para células */
+.turn-table .numero-turno {
+  color: var(--guinda-principal);
+  font-weight: bold;
+  font-size: var(--texto-3xl);
+}
+
+.turn-table .estado-turno {
+  font-family: var(--fuente-avenir);
+  font-weight: 500;
+  padding: var(--espacio-xs) var(--espacio-sm);
+  border-radius: var(--radio-sm);
+  display: inline-block;
+}
+
+.turn-table .estado-pendiente {
+  background-color: rgba(255, 193, 7, 0.2);
+  color: #856404;
+}
+
+.turn-table .estado-en-proceso {
+  background-color: rgba(0, 123, 255, 0.2);
+  color: #004085;
+}
+
+.turn-table .estado-completado {
+  background-color: rgba(40, 167, 69, 0.2);
+  color: #155724;
+}
+
+/* Responsive para la tabla */
+@media (max-width: 768px) {
+  .turn-table {
+    font-size: var(--texto-lg);
+  }
+  
+  .turn-table th {
+    font-size: var(--texto-lg);
+    padding: var(--espacio-md) var(--espacio-sm);
+  }
+  
+  .turn-table td {
+    padding: var(--espacio-md) var(--espacio-sm);
+  }
+  
+  .turn-table .numero-turno {
+    font-size: var(--texto-2xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .turn-table {
+    font-size: var(--texto-base);
+  }
+  
+  .turn-table th {
+    font-size: var(--texto-base);
+    padding: var(--espacio-sm);
+  }
+  
+  .turn-table td {
+    padding: var(--espacio-sm);
+  }
+  
+  .turn-table .numero-turno {
+    font-size: var(--texto-xl);
+  }
+}
+
+/* Animación para nuevos turnos */
+@keyframes highlightNew {
+  0% {
+    background-color: var(--guinda-principal);
+    color: var(--blanco);
+  }
+  100% {
+    background-color: inherit;
+    color: inherit;
+  }
+}
+
+.turn-table tr.nuevo-turno {
+  animation: highlightNew 2s ease-in-out;
 }

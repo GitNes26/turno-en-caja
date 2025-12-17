@@ -1,199 +1,246 @@
 <!DOCTYPE html>
 <html lang="es">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- JQuery 3.7.1 -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-   <!-- JQuery 3.7.1 -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <!-- FontAwesome 6 -->
+      <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.0/css/all.css" />
 
-   <!-- FontAwesome 6 -->
-   <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.0/css/all.css">
+      <!-- Bootstrap 5.3.2 -->
+      <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> -->
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" href="styles/style.css" />
 
-   <!-- Bootstrap 5.3.2 -->
-   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> -->
+      <title>Turnos en caja</title>
+   </head>
 
-   <link rel="stylesheet" href="/styles/style.css">
+   <body>
+      <audio id="notificacion" hidden autoplay="true">
+         <source src="assets/songs/correct-ding.mp3" type="" />
+      </audio>
 
-   <title>Turnos en caja</title>
-</head>
+      <div id="particles-js" class="bg-index"></div>
 
-<body>
-   <!-- <div class="container">
-      <div class="figure figure1"></div>
-      <div class="figure figure2"></div>
-      <div class="figure figure3"></div>
-   </div> -->
+      <div class="container">
+         <header class="grid-column">
+            <img src="assets/images/logo-gpd.png" width="500px" alt="Logo" />
+            <span class="title">TURNOS EN CAJA</span>
+         </header>
 
-   <div class="container">
-      <header>
-         <h1 class="title">TURNOS EN CAJA</h1>
-      </header>
+         <main>
+            <section class="grid-column">
+               <div class="table-container">
+                  <table class="turn-table">
+                     <thead>
+                        <tr>
+                           <th>Caja</th>
+                           <th>Turno Actual</th>
+                        </tr>
+                     </thead>
+                     <tbody id="tbody_turnos">
+                        <tr>
+                           <td>Caja -</td>
+                           <td>00</td>
+                        </tr>
+                        <tr>
+                           <td>Caja -</td>
+                           <td>00</td>
+                        </tr>
+                        <tr>
+                           <td>Caja -</td>
+                           <td>00</td>
+                        </tr>
+                        <tr>
+                           <td>Caja -</td>
+                           <td>00</td>
+                        </tr>
+                        <tr>
+                           <td>Caja -</td>
+                           <td>00</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
 
-      <main>
-         <section class="grid-column">
-            <div class="table-container">
-               <table class="turn-table">
-                  <thead>
-                     <tr>
-                        <th>Caja</th>
-                        <th>Turno Actual</th>
-                     </tr>
-                  </thead>
-                  <tbody id="tbody_turnos">
-                     <tr>
-                        <td>Caja 1</td>
-                        <td>A-001</td>
-                     </tr>
-                     <tr>
-                        <td>Caja 2</td>
-                        <td>B-002</td>
-                     </tr>
-                     <tr>
-                        <td>Caja 3</td>
-                        <td>C-003</td>
-                     </tr>
-                     <tr>
-                        <td>Caja 4</td>
-                        <td>D-004</td>
-                     </tr>
-                     <tr>
-                        <td>Caja 5</td>
-                        <td>E-005</td>
-                     </tr>
-                  </tbody>
-               </table>
-            </div>
+               <div class="banners-container">
+                  <video id="banner" preload="auto" controls>
+                     <source src="assets/videos/0.mp4" type="video/mp4" id="contenido-video" />
+                  </video>
+               </div>
+            </section>
 
-            <div class="banners-container">
-               <video id="banner" src="assets/images/video1.mp4" controls autoplay loop></video>
-            </div>
-         </section>
-
-         <section class="">
-            <h1 class="subtitle">TURNOS EN COLA ...</h1>
-            <div class="grid-column" id="cards_container">
-               <div class="card">A-006</div>
-               <div class="card">B-007</div>
-               <div class="card">C-008</div>
-               <div class="card">D-009</div>
-               <div class="card">E-010</div>
-               <div class="card">A-011</div>
-               <div class="card">B-012</div>
-               <div class="card">C-013</div>
-               <div class="card">D-014</div>
-               <div class="card">D-014</div>
-               <div class="card">D-014</div>
-               <div class="card">D-014</div>
-               <div class="card">D-014</div>
-               <div class="card">D-014</div>
-               <div class="card">D-014</div>
-               <div class="card">D-014</div>
-            </div>
-         </section>
-      </main>
-      <div class="marquee-container">
-         <div id="marquee_text">
-            ESTE ES UN MENSAJE DE PRUEBA PARA VER COMO AVANZA LA CINTILLA
+            <section class="" hidden>
+               <h1 class="subtitle">TURNOS EN COLA ...</h1>
+               <div class="grid-column" id="cards_container">
+                  <div class="card">A-006</div>
+                  <div class="card">B-007</div>
+                  <div class="card">C-008</div>
+                  <div class="card">D-009</div>
+                  <div class="card">E-010</div>
+                  <div class="card">A-011</div>
+                  <div class="card">B-012</div>
+                  <div class="card">C-013</div>
+                  <div class="card">D-014</div>
+                  <div class="card">D-014</div>
+                  <div class="card">D-014</div>
+                  <div class="card">D-014</div>
+                  <div class="card">D-014</div>
+                  <div class="card">D-014</div>
+                  <div class="card">D-014</div>
+                  <div class="card">D-014</div>
+               </div>
+            </section>
+         </main>
+         <div class="marquee-container" hidden>
+            <!-- <div id="marquee_text" hidden>ESTE ES UN MENSAJE DE PRUEBA PARA VER COMO AVANZA LA CINTILLA</div> -->
          </div>
       </div>
-   </div>
 
+      <!-- Bootstrap 5.3.2 -->
+      <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
 
-   <!-- Bootstrap 5.3.2 -->
-   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
+      <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+      <script type="text/javascript">
+         const videos_path = "assets/videos";
+         var v = document.getElementById("banner");
+         var cv = document.getElementById("contenido-video");
+         v.addEventListener("ended", async () => {
+            let index = Number(cv.src.split("/").reverse()[0].split(".")[0]);
+            index += 1;
+            const fetchReponse = await fetch(`${videos_path}/${index}.mp4`, {
+               headers: {
+                  "Content-Type": "application/json"
+               }
+            });
+            const response = await fetchReponse;
+            if (response.status === 404) index = 0;
 
-   <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
-   <!-- Marquee JQuery -->
-   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.Marquee/1.6.0/jquery.marquee.min.js"
-      integrity="sha512-JHJv/L48s1Hod24iSI0u9bcF/JlUi+YaxliKdbasnw/U1Lp9xxWkaZ3O5OuQPMkVwOVXeFkF4n4176ouA6Py3A=="
-      crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+            cv.src = `${videos_path}/${index}.mp4`;
 
-   <script type="module">
-      // Enable pusher logging - don't include this in production
-      // document.getElementById("tbody_turnos").innerHTML = "";
-      // document.getElementById("cards_container").innerHTML = "";
-
-      import marquee from 'https://cdn.jsdelivr.net/npm/vanilla-marquee/dist/vanilla-marquee.js';
-
-
-      const banner = document.getElementById("banner");
-      const tbody_turnos = document.getElementById("tbody_turnos");
-      const cards_container = document.getElementById("cards_container");
-      const CAJAS = 5;
-      const marquee_text = document.getElementById("marquee_text");
-      // const marquee_text = $("#marquee_text");
-      const UN_SEGUNDO = 1000;
-      const VELOCIDAD_CINTILLA = 15 * UN_SEGUNDO;
-      Pusher.logToConsole = true;
-
-      var pusher = new Pusher("b70b1baa91c69051cb75", {
-         cluster: "us2",
-      });
-
-      var channel = pusher.subscribe("myCanal");
-      channel.bind("myEvento", function (data) {
-         const rows = JSON.parse(data.message);
-         // console.log("ya llego", rows);
-         const tableHtml = `
-   ${rows.map((r, index) => {
-            if (index >= CAJAS) return
-            let bg_row = "";
-            if (index == 0) bg_row = "red";
-
-            return `
-   <tr style="background-color:${bg_row}">
-      <td>${r.CAJA}</td>
-      <td>${r.TURNO}</td>
-   </tr>
-   `;
-         })}`;
-
-         const cardsHtml = `
-   ${rows.map((r, index) => {
-            if (index < CAJAS) return
-            return ` <div class="card">${r.TURNNO}</div>
-      `;
-         })}`;
-
-         tbody_turnos.innerHTML = tableHtml;
-         cards_container.innerHTML = cardsHtml;
-      });
-
-      document.addEventListener('DOMContentLoaded', () => {
-         console.log("YA CARGO");
-         if (banner.src) console.log("tiene src");
-         else console.log("no tiene src");
-         console.log("AJSDKHASJKDHKAHDJLKA", banner.src);
-
-         new marquee(marquee_text, {
-            // delayBeforeStart: 0,
-            direction: 'left',
-            speed: 80,
-            css3easing: 'linear',
-            pauseOnHover: true,
-            duplicated: false,
-            gap: 10,
+            v.load(); // carga
+            v.volume = 0.15;
+            v.setAttribute("muted", "muted");
+            v.play(); // y lo reproduce
          });
-         // marquee.marquee('destroy');
-         // marquee.marquee({
-         //    //velocidad en milisegundos de la marquesina
-         //    duration: VELOCIDAD_CINTILLA,
-         //    //espacio en píxeles entre los tickers
-         //    gap: 50,
-         //    //tiempo en milisegundos antes de que la marquesina comience a animarse
-         //    delayBeforeStart: 0,
-         //    direction: 'left',
-         //    //verdadero o falso: si la marquesina debe duplicarse para mostrar un efecto de flujo continuo
-         //    duplicated: false,
-         // });
-         // marquee.bind("finished", () => {
-         //    t++; cambiarTextosMarquee();
-         // })
-      })
+      </script>
+      <script type="module">
+         import marquee from "https://cdn.jsdelivr.net/npm/vanilla-marquee/dist/vanilla-marquee.js";
 
-   </script>
-</body>
+         const banner = document.getElementById("banner");
+         const tbody_turnos = document.getElementById("tbody_turnos");
+         const cards_container = document.getElementById("cards_container");
+         const CAJAS = 5;
+         const marquee_text = document.getElementById("marquee_text");
+         // const marquee_text = $("#marquee_text");
+         const UN_SEGUNDO = 1000;
+         const VELOCIDAD_CINTILLA = 15 * UN_SEGUNDO;
 
+         document.addEventListener("DOMContentLoaded", () => {
+            //console.log("YA CARGO");
+            if (banner.src) console.log("tiene src");
+            else console.log("no tiene src");
+            //console.log("AJSDKHASJKDHKAHDJLKA", banner.src);
+
+            new marquee(marquee_text, {
+               // delayBeforeStart: 0,
+               direction: "left",
+               speed: 80,
+               css3easing: "linear",
+               pauseOnHover: true,
+               duplicated: false,
+               gap: 10
+            });
+            // marquee.marquee('destroy');
+            // marquee.marquee({
+            //    //velocidad en milisegundos de la marquesina
+            //    duration: VELOCIDAD_CINTILLA,
+            //    //espacio en píxeles entre los tickers
+            //    gap: 50,
+            //    //tiempo en milisegundos antes de que la marquesina comience a animarse
+            //    delayBeforeStart: 0,
+            //    direction: 'left',
+            //    //verdadero o falso: si la marquesina debe duplicarse para mostrar un efecto de flujo continuo
+            //    duplicated: false,
+            // });
+            // marquee.bind("finished", () => {
+            //    t++; cambiarTextosMarquee();
+            // })
+         });
+
+         const notificacion = document.getElementById("notificacion");
+         notificacion.volume = 0;
+         document.addEventListener("DOMContentLoaded", () => (notificacion.muted = false));
+         window.onload = () => {
+            notificacion.muted = false;
+         };
+
+         // Enable pusher logging - don't include this in production
+         // document.getElementById("tbody_turnos").innerHTML = "";
+         // document.getElementById("cards_container").innerHTML = "";
+
+         Pusher.logToConsole = false;
+
+         var pusher = new Pusher("b70b1baa91c69051cb75", {
+            cluster: "us2"
+         });
+
+         function detenerAudio() {
+            notificacion.currentTime = 0;
+         }
+
+         function hablar(texto) {
+            const synthesis = window.speechSynthesis;
+            const mensaje = new SpeechSynthesisUtterance(texto);
+            mensaje.lang = "es-MX";
+            mensaje.rate = 1.5;
+
+            synthesis.speak(mensaje);
+         }
+
+         var channel = pusher.subscribe("myCanal");
+         channel.bind("myEvento", function (data) {
+            const ReproducirAudio = () => {
+               body.click();
+            };
+
+            const rows = JSON.parse(data.message);
+
+            const tableHtml = `
+            ${rows.map((r, index) => {
+               if (index >= CAJAS) return;
+               let style = "";
+               if (index == 0) style = "background-color:red; color:yellow;";
+
+               return `<tr style="${style}">
+                     <td>${r.caja}</td>
+                     <td>${r.turno}</td>
+                  </tr>`;
+            })}`;
+
+            const cadenaSinComas = tableHtml.replace(",", " ");
+            const cadenaSinComas2 = cadenaSinComas.replace(",", " ");
+            const cadenaSinComas3 = cadenaSinComas2.replace(",", " ");
+            const cadenaSinComas4 = cadenaSinComas3.replace(",", " ");
+            const cadenaSinComas5 = cadenaSinComas4.replace(",", " ");
+            const cadenaSinComas6 = cadenaSinComas5.replace(",", " ");
+            document.getElementById("tbody_turnos").innerHTML = cadenaSinComas6;
+
+            detenerAudio();
+            notificacion.volume = 0.25;
+            notificacion.play();
+            setTimeout(() => {
+               hablar(`Turno ${rows[0].turno} en ${rows[0].caja}`);
+            }, 500);
+         });
+      </script>
+      <!-- Particular JS -->
+      <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+      <script src="scripts/particles.js"></script>
+   </body>
 </html>

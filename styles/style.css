@@ -1,152 +1,373 @@
-@import url("../assets/fonts/Lexend-VariableFont_wght.ttf");
-/* FIGURAS FLOTANTES */
+/* ============================================
+   ESTILOS PRINCIPALES - CON VARIABLES GLOBALES
+   ============================================ */
+
+/* Importar variables primero */
+@import url("./variables.css");
 @import url("./scroll.css");
 @import url("./float_figures.css");
 @import url("./turn-table.css");
 
+/* RESET Y ESTILOS BASE */
 * {
-   font-family: "Lexend", sans-serif;
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-   background-color: rgb(18, 196, 136);
-   /* height: 100vh; */
-   width: 100vw;
-   /* min-height: 100vh; */
-   /* overflow: hidden; */
+  background-color: transparent;
+  color: var(--negro);
+  font-family: var(--fuente-avenir);
+  font-weight: normal;
+  line-height: 1.6;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
+.bg-index {
+   width: 100%;
+   height: 100%;
+   position:fixed;
+   /* background-color: #EDF4ED; */
+   /* background-color: #12c48b; */
+   /* background: rgb(18,196,139); */
+   background: var(--guinda-principal);
+   background: radial-gradient(circle, var(--gris) 0%, var(--gris-claro) 40%);
+
+   /* background: radial-gradient(circle, rgba(18,196,139,1) 0%, rgba(7,52,38,1) 100%); */
+   /* background-image: url(../assets/img/bg-pattern-green.png); */
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+   filter: brightness(0.95);
+   /* transform: rotate(180deg); */
+   /* opacity: 0.4;
+   background: linear-gradient(135deg, #6AC66855 25%, transparent 25%) -40px 0/ 80px 80px, linear-gradient(225deg, #6AC668 25%, transparent 25%) -40px 0/ 80px 80px, linear-gradient(315deg, #6AC66855 25%, transparent 25%) 0px 0/ 80px 80px, linear-gradient(45deg, #6AC668 25%, #EDF4ED 25%) 0px 0/ 80px 80px; */
+}
+
+/* ============================================
+   LAYOUT PRINCIPAL
+   ============================================ */
+
 .container {
-   display: grid;
-   grid-template-rows: auto 1fr auto; /* Define las filas: header, secciones y footer */
-   /* grid-template-columns: auto 1fr auto; */
-   min-height: 100vh; /* Establece la altura mínima para ocupar el 100% de la ventana */
-   grid-template-areas:
-      "header"
-      "main"
-      "footer";
-   padding-inline: 5vw;
-   /* place-items: stretch stretch; */
-   /* place-content: stretch; */
-   /* place-self: stretch; */
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  min-height: 100vh;
+  padding-inline: 5vw;
+  /* background-color: var(--gris-cool); */
 }
 
 .container-fluid {
-   width: 100%;
+  width: 100%;
+  padding-inline: 5vw;
 }
 
+/* ============================================
+   GRIDS Y FLEXBOX UTILITARIOS
+   ============================================ */
+
 .grid {
-   display: grid;
-   grid-template-rows: repeat(auto-fit, minmax(1rem, 1fr));
-   grid-gap: 1rem;
-   justify-content: center;
-   align-items: center;
-   margin-inline: auto;
-   padding: 1rem 0;
-   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: var(--espacio-lg);
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
+  padding: var(--espacio-lg) 0;
+  width: 100%;
 }
 
 .grid-column {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-   grid-gap: 1rem;
-   justify-content: center;
-   align-items: center;
-   margin: auto;
-   padding: 0.5rem 0;
-   justify-items: center;
-   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--espacio-lg);
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: var(--espacio-sm) 0;
+  justify-items: center;
+  width: 100%;
 }
+
+/* ============================================
+   ESTRUCTURA DE ÁREAS
+   ============================================ */
 
 header {
-   grid-area: header;
-   color: white;
-   /* padding: 20px; */
+  grid-area: header;
+  /* background: var(--gradiente-guinda); */
+  color: var(--blanco);
+  padding: var(--espacio-xl) 0;
+  position: relative;
+  overflow: hidden;
 }
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gris-claro), var(--blanco), var(--gris-claro));
+  opacity: 0.3;
+}
+
 main {
-   height: 100%;
+  grid-area: main;
+  height: 100%;
+  padding: var(--espacio-xs) 0;
+  /* background-color: var(--gris-claro);  */
 }
+
 section {
-   padding: 20px 0;
-   /* border: 1px solid #ccc; */
+  padding: var(--espacio-xs) 0;
 }
+
 footer {
-   grid-area: footer;
-   color: white;
-   padding: 20px;
+  grid-area: footer;
+  /* background-color: var(--gris-cool); */
+  color: var(--blanco);
+  padding: var(--espacio-xl);
+  font-family: var(--fuente-avenir);
+  font-size: var(--texto-sm);
 }
+
+/* ============================================
+   TIPOGRAFÍA Y TÍTULOS
+   ============================================ */
 
 .title {
-   margin-top: 1rem;
-   text-align: center;
-   width: 100%;
-}
-.subtitle {
-   color: white;
+  margin-top: var(--espacio-xl);
+  text-align: center;
+  width: 100%;
+  font-family: var(--fuente-zapf);
+  font-size: 5.5rem;
+  color: var(--guinda-principal);
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
+.subtitle {
+  font-family: var(--fuente-avenir);
+  font-size: var(--texto-xl);
+  color: var(--blanco);
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: var(--espacio-lg);
+}
+
+/* ============================================
+   COMPONENTES ESPECÍFICOS
+   ============================================ */
+
 .table-container {
-   background-color: blue;
-   height: 100%;
-   width: 100%;
-   grid-column: span 1;
+  background-color: var(--guinda-secundario);
+  height: 100%;
+  width: 100%;
+  grid-column: span 1;
+  border-radius: var(--radio-lg);
+  padding: var(--espacio-sm);
+  box-shadow: var(--sombra-guinda);
 }
 
 .banners-container {
-   background-color: black;
-   height: 55vh;
-   grid-column: span 2;
-   display: flex;
-   border-radius: 12px;
-   justify-content: center;
-   /* grid-area: main; */
+  background-color: var(--negro);
+  height:65vh;
+  grid-column: span 2;
+  display: flex;
+  border-radius: var(--radio-lg);
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
 }
 
+/* .banners-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent, rgba(155, 34, 66, 0.1), transparent);
+  pointer-events: none;
+} */
+
 #cards_container {
-   height: 25vh;
-   overflow-y: scroll;
+  height: 25vh;
+  overflow-y: auto;
+  padding: var(--espacio-sm);
+  background-color: var(--gris-claro);
+  border-radius: var(--radio-md);
+  border: 2px solid var(--gris);
 }
 
 .card {
-   background-color: white;
-   border: none;
-   border-radius: 12px;
-   padding: 20px;
-   text-align: center;
-   color: rgb(13, 126, 88);
-   font-weight: bolder;
-   font-size: 2rem;
-   width: 100%;
+  background-color: var(--blanco);
+  border: 2px solid var(--gris-claro);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-lg);
+  text-align: center;
+  color: var(--guinda-principal);
+  font-family: var(--fuente-zapf);
+  font-weight: bold;
+  font-size: var(--texto-2xl);
+  width: 100%;
+  margin-bottom: var(--espacio-sm);
+  transition: all var(--transicion-normal);
+  box-shadow: var(--sombra-suave);
 }
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-fuerte);
+  border-color: var(--guinda-principal);
+}
+
+/* ============================================
+   ELEMENTOS MULTIMEDIA
+   ============================================ */
 
 img,
 video,
 object,
 embed {
-   max-width: 100%;
-   height: auto;
-   object-fit: cover;
-   border-radius: 10px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radio-md);
+  transition: transform var(--transicion-normal);
 }
 
+img:hover,
+video:hover {
+  transform: scale(1.02);
+}
+
+/* ============================================
+   MARQUEE (TICKER)
+   ============================================ */
+
 .marquee-container {
-   position: absolute;
-   bottom: 0;
-   width: 100%;
-   height: 4%;
-   padding-inline: 5vw;
-   /* background-color: aqua; */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: var(--gradiente-guinda);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 
 #marquee_text {
-   width: 100%;
-   height: 100%;
-   overflow: hidden;
-   /* background-color: #000; */
-   color: #e9ecef;
-   font-size: 1.5rem !important;
-   /* font-weight: bolder; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: var(--blanco);
+  font-family: var(--fuente-avenir);
+  font-size: var(--texto-lg) !important;
+  font-weight: 500;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .container {
+    padding-inline: 3vw;
+  }
+  
+  .title {
+    font-size: var(--texto-3xl);
+  }
+  
+  .banners-container {
+    height: 45vh;
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-inline: 2vw;
+  }
+  
+  .title {
+    font-size: var(--texto-2xl);
+    margin-top: var(--espacio-lg);
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--espacio-md);
+  }
+  
+  .grid-column {
+    grid-template-columns: 1fr;
+  }
+  
+  .banners-container {
+    height: 35vh;
+  }
+  
+  #cards_container {
+    height: 30vh;
+  }
+  
+  .card {
+    font-size: var(--texto-xl);
+    padding: var(--espacio-md);
+  }
+  
+  #marquee_text {
+    font-size: var(--texto-base) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: var(--texto-xl);
+  }
+  
+  .subtitle {
+    font-size: var(--texto-lg);
+  }
+  
+  .banners-container {
+    height: 25vh;
+  }
+  
+  .card {
+    font-size: var(--texto-lg);
+    padding: var(--espacio-sm);
+  }
+  
+  footer {
+    padding: var(--espacio-lg) var(--espacio-md);
+    text-align: center;
+  }
 }

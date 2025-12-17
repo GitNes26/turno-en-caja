@@ -1,3 +1,6 @@
+/* scroll.css */
+@import url("./variables.css");
+
 /* Estilos para navegadores webkit como Chrome y Safari */
 ::-webkit-scrollbar {
    width: 0px; /* Ancho de la barra de desplazamiento */
@@ -26,4 +29,16 @@ scrollbar-track {
 scrollbar-thumb {
    background-color: #888; /* Color del "pulgarcito" de la barra */
    border-radius: 5px; /* Borde redondeado del "pulgarcito" */
+}
+
+
+/* Ahora puedes usar las variables */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  background-color: var(--gris-claro);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--gradiente-guinda);
+  border-radius: var(--radio-sm);
 }

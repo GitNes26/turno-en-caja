@@ -1,0 +1,231 @@
+/* ============================================
+   VARIABLES GLOBALES - COLORIMETRÍA Y TIPOGRAFÍA
+   ============================================ */
+
+:root {
+  /* COLORES PRINCIPALES */
+  --guinda-principal: #9B2242;
+  --guinda-secundario: #651D32;
+  --gris-cool: #474C55;
+  --gris: #727372;
+  --gris-claro: #B8B6AF;
+  --negro: #130D0E;
+  --blanco: #FFFFFF;
+  
+  /* COLORES SECUNDARIOS DERIVADOS */
+  --guinda-claro: rgba(155, 34, 66, 0.1);
+  --guinda-hover: rgba(101, 29, 50, 0.9);
+  --gris-transparente: rgba(114, 115, 114, 0.1);
+  
+  /* GRADIENTES */
+  --gradiente-guinda: linear-gradient(135deg, var(--guinda-principal) 0%, var(--guinda-secundario) 100%);
+  --gradiente-gris: linear-gradient(135deg, var(--gris-cool) 0%, var(--gris) 100%);
+  
+  /* SOMBRAS */
+  --sombra-guinda: 0 8px 32px rgba(155, 34, 66, 0.15);
+  --sombra-fuerte: 0 15px 50px rgba(19, 13, 14, 0.25);
+  --sombra-suave: 0 4px 12px rgba(19, 13, 14, 0.08);
+  
+  /* TIPOGRAFÍAS */
+  --fuente-zapf: 'ZapfHumanist', serif;
+  --fuente-avenir: 'Avenir', sans-serif;
+  --fuente-lexend: 'Lexend', sans-serif;
+  
+  /* TAMAÑOS DE FUENTE */
+  --texto-xs: 0.75rem;   /* 12px */
+  --texto-sm: 0.875rem;  /* 14px */
+  --texto-base: 1rem;    /* 16px */
+  --texto-lg: 1.125rem;  /* 18px */
+  --texto-xl: 1.25rem;   /* 20px */
+  --texto-2xl: 1.5rem;   /* 24px */
+  --texto-3xl: 1.875rem; /* 30px */
+  --texto-4xl: 2.25rem;  /* 36px */
+  --texto-5xl: 3rem;     /* 48px */
+  --texto-6xl: 3.25rem;     /* 48px */
+  --texto-7xl: 3.5rem;     /* 48px */
+  --texto-8xl: 3.875rem;     /* 48px */
+  --texto-9xl: 4rem;     /* 48px */
+  
+  /* ESPACIADO */
+  --espacio-xs: 0.25rem;  /* 4px */
+  --espacio-sm: 0.5rem;   /* 8px */
+  --espacio-md: 1rem;     /* 16px */
+  --espacio-lg: 1.5rem;   /* 24px */
+  --espacio-xl: 2rem;     /* 32px */
+  --espacio-2xl: 3rem;    /* 48px */
+  
+  /* BORDES */
+  --radio-sm: 0.5rem;     /* 8px */
+  --radio-md: 1rem;       /* 16px */
+  --radio-lg: 1.5rem;     /* 24px */
+  --radio-xl: 2rem;       /* 32px */
+  
+  /* ANIMACIONES */
+  --transicion-rapida: 150ms ease-in-out;
+  --transicion-normal: 300ms ease-in-out;
+  --transicion-lenta: 500ms ease-in-out;
+}
+
+/* ============================================
+   REGLAS DE FUENTES PERSONALIZADAS
+   ============================================ */
+
+@font-face {
+  font-family: 'ZapfHumanist';
+  src: url('../assets/fonts/ZapfHumanist/ZapfHumanist-Roman.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ZapfHumanist';
+  src: url('../assets/fonts/ZapfHumanist/ZapfHumanist-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ZapfHumanist';
+  src: url('../assets/fonts/ZapfHumanist/ZapfHumanist-Italic.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ZapfHumanist';
+  src: url('../assets/fonts/ZapfHumanist/ZapfHumanist-BoldItalic.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('../assets/fonts/AvenirLTPro/AvenirLTPro-Roman.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('../assets/fonts/AvenirLTPro/AvenirLTPro-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('../assets/fonts/AvenirLTPro/AvenirLTPro-Book.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('../assets/fonts/AvenirLTPro/AvenirLTPro-Heavy.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lexend';
+  src: url('../assets/fonts/Lexend-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================
+   CLASES DE UTILIDAD PARA TIPOGRAFÍAS
+   ============================================ */
+
+.font-zapf {
+  font-family: var(--fuente-zapf);
+}
+
+.font-avenir {
+  font-family: var(--fuente-avenir);
+}
+
+.font-lexend {
+  font-family: var(--fuente-lexend);
+}
+
+/* ============================================
+   CLASES DE UTILIDAD PARA COLORES
+   ============================================ */
+
+.color-guinda {
+  color: var(--guinda-principal);
+}
+
+.color-guinda-secundario {
+  color: var(--guinda-secundario);
+}
+
+.color-gris-cool {
+  color: var(--gris-cool);
+}
+
+.color-gris {
+  color: var(--gris);
+}
+
+.color-gris-claro {
+  color: var(--gris-claro);
+}
+
+.color-negro {
+  color: var(--negro);
+}
+
+.color-blanco {
+  color: var(--blanco);
+}
+
+.bg-guinda {
+  background-color: var(--guinda-principal);
+}
+
+.bg-guinda-secundario {
+  background-color: var(--guinda-secundario);
+}
+
+.bg-gris-cool {
+  background-color: var(--gris-cool);
+}
+
+.bg-gris {
+  background-color: var(--gris);
+}
+
+.bg-gris-claro {
+  background-color: var(--gris-claro);
+}
+
+.bg-negro {
+  background-color: var(--negro);
+}
+
+.bg-blanco {
+  background-color: var(--blanco);
+}
+
+/* ============================================
+   CLASES DE UTILIDAD PARA GRADIENTES
+   ============================================ */
+
+.gradiente-guinda {
+  background: var(--gradiente-guinda);
+}
+
+.gradiente-gris {
+  background: var(--gradiente-gris);
+}
