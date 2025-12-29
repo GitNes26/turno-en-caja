@@ -185,6 +185,7 @@ footer {
 .banners-container {
   background-color: var(--negro);
   height:65vh;
+  width: 100%;
   grid-column: span 2;
   display: flex;
   border-radius: var(--radio-lg);
@@ -248,8 +249,7 @@ embed {
   transition: transform var(--transicion-normal);
 }
 
-img:hover,
-video:hover {
+img:hover {
   transform: scale(1.02);
 }
 

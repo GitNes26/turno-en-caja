@@ -2,7 +2,7 @@
 // document.getElementById("tbody_turnos").innerHTML = "";
 // document.getElementById("cards_container").innerHTML = "";
 
-const CAJAS = 5;
+const CAJAS = 6;
 Pusher.logToConsole = true;
 
 var pusher = new Pusher("b70b1baa91c69051cb75", {
@@ -12,7 +12,7 @@ var pusher = new Pusher("b70b1baa91c69051cb75", {
 var channel = pusher.subscribe("myCanal");
 channel.bind("myEvento", function (data) {
    const rows = JSON.parse(data.message);
-   console.log("ya llego", rows);
+   // console.log("ya llego", rows);
    const tableHtml = `
             ${rows.map((r, index) => {
                if (index >= CAJAS) return;
