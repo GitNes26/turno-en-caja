@@ -49,7 +49,8 @@
 }
 
 .turn-table td {
-  padding: var(--espacio-xs) var(--espacio-md);
+  /* padding: var(--espacio-xs) var(--espacio-md); */
+  padding: 0px;
   text-align: center;
   border-bottom: 2px solid var(--gris-claro);
   transition: all var(--transicion-rapida);
@@ -58,7 +59,7 @@
 .turn-table tbody tr {
   background-color: var(--gris-claro);
   transition: all var(--transicion-normal);
-  font-size: var(--texto-15xl);
+  font-size: 150px; /* var(--texto-16xl); */
 }
 
 .turn-table tbody tr:hover {
