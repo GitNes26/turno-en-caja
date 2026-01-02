@@ -27,7 +27,7 @@
 
       <div id="particles-js" class="bg-index"></div>
 
-      <div class="container">
+      <div class="container container-fluid">
          <header class="grid-column">
             <img src="assets/images/logo-gpd.png" width="500px" alt="Logo" />
             <span class="title">TURNOS EN CAJA</span>
@@ -232,7 +232,7 @@
             document.getElementById("tbody_turnos").innerHTML = cadenaSinComas6;
 
             detenerAudio();
-            notificacion.volume = 0.25;
+            notificacion.volume = 0.5;
             notificacion.play();
             setTimeout(() => {
                hablar(`Turno ${rows[0].turno} en ${rows[0].caja}`);

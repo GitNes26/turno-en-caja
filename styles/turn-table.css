@@ -58,7 +58,7 @@
 .turn-table tbody tr {
   background-color: var(--gris-claro);
   transition: all var(--transicion-normal);
-  font-size: var(--texto-7xl);
+  font-size: var(--texto-15xl);
 }
 
 .turn-table tbody tr:hover {

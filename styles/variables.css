@@ -45,6 +45,12 @@
   --texto-7xl: 3.5rem;     /* 48px */
   --texto-8xl: 3.875rem;     /* 48px */
   --texto-9xl: 4rem;     /* 48px */
+  --texto-10xl: 4.25rem;     /* 48px */
+  --texto-11xl: 4.5rem;     /* 48px */
+  --texto-12xl: 5rem;     /* 48px */
+  --texto-13xl: 5.5rem;     /* 48px */
+  --texto-14xl: 6rem;     /* 48px */
+  --texto-15xl: 6.5rem;     /* 48px */
   
   /* ESPACIADO */
   --espacio-xs: 0.25rem;  /* 4px */
