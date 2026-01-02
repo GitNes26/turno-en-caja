@@ -216,7 +216,17 @@
             };
 
             const rows = JSON.parse(data.message);
-
+            
+            if (data.tipo == "repetir-anuncio") {
+               detenerAudio();
+               notificacion.volume = 0.5;
+               notificacion.play();
+               setTimeout(() => {
+                  hablar(`Turno ${rows[0].turno} en ${rows[0].caja}`);
+               }, 500);
+               return;
+            }
+            
             const tableHtml = `
             ${rows.map((r, index) => {
                if (index >= CAJAS) return;
