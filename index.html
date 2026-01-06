@@ -216,17 +216,20 @@
             };
 
             const rows = JSON.parse(data.message);
-            
+            const letra = rows[0].turno.match(/[a-zA-Z]+/g)[0];
+            const numero = rows[0].turno.match(/\d+/g)[0];
+            const dialogo = `Turno ${letra} - ${numero} en ${rows[0].caja}`;
+
             if (data.tipo == "repetir-anuncio") {
                detenerAudio();
                notificacion.volume = 0.5;
                notificacion.play();
                setTimeout(() => {
-                  hablar(`Turno ${rows[0].turno} en ${rows[0].caja}`);
+                  hablar(dialogo);
                }, 500);
                return;
             }
-            
+
             const tableHtml = `
             ${rows.map((r, index) => {
                if (index >= CAJAS) return;
@@ -251,7 +254,7 @@
             notificacion.volume = 0.5;
             notificacion.play();
             setTimeout(() => {
-               hablar(`Turno ${rows[0].turno} en ${rows[0].caja}`);
+               hablar(dialogo);
             }, 500);
          });
       </script>
