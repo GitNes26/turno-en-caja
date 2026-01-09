@@ -205,6 +205,8 @@
             const mensaje = new SpeechSynthesisUtterance(texto);
             mensaje.lang = "es-MX";
             mensaje.rate = 1.5;
+            mensaje.volume = 1;
+            // mensaje.pitch = 2;
 
             synthesis.speak(mensaje);
          }
